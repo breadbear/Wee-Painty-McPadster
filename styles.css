@@ -1,0 +1,57 @@
+h1 {
+  font-family: arial, sans-serif;
+  margin: 0px auto;
+  text-align: center;
+  font-size: 3em;
+}
+
+h2 {
+  font-family: arial, sans-serif;
+  text-align: center;
+}
+
+input {
+  display: inline;
+  font-size: 16px;
+
+}
+
+p {
+  font-family: arial, sans-serif;
+  text-align: center;
+
+}
+
+
+.wrapper {
+  margin: 0px auto;
+}
+
+.topbutton {
+  text-align: center;
+}
+
+.bottombutton {
+  text-align: center;
+}
+
+#grid {
+  position: relative;
+  height: 400px;
+  width: 400px;
+  margin: 10px auto;
+  padding: 0;
+  border: 1px solid black;
+  box-sizing: content-box;
+  max-height: 400px;
+  font-size: 0;
+}
+
+.divGrid {
+  border: 1px solid black;
+  display: inline-block;
+  /*display: table-cell;*/
+  clear: both;
+  box-sizing: border-box;
+
+}

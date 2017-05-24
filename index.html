@@ -3,14 +3,42 @@
   <head>
     <title>A Wee Sketchy McPadster</title>
 
-    <!-- THESE LINKS BELOW HAVEN'T BEEN UPDATED YET-->
     <link href="../css_reset.css" rel="stylesheet" type="text/css">
-    <link href="style.css" rel="stylesheet" type="text/css">
-  </head>
+    <link href="styles.css" rel="stylesheet" type="text/css">
 
+  </head>
   <body>
 
-    <script src="../jquery-3.2.1-uncompressed.js"></script>
+  <h1>A Wee Sketchy McPadster</h1>
+    <h2>Mouse into the box to start drawing</h2>
+
+    <div class="wrapper">
+      <div class="topbutton">
+        <button class="top" id="start">Let's get started</button>
+        <button class="top">Change pixel size</button>
+        <button class="top">Start over</button>
+      </div>
+      </br>
+      <div class="bottombutton">
+        <!--Change color RGB DROPDOWN -->
+        <button class="minor">Rainbow mode</button>
+        <button class="minor">Eraser</button>
+        <button class="minor">Squares</button>
+        <button class="minor">Circles</button>
+      </div>
+
+
+      <div id="grid">
+
+      </div>
+
+
+    </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--script src="../jquery-3.2.1-uncompressed.js"></script-->
     <script src="application.js"></script>
   </body>
   </html>
