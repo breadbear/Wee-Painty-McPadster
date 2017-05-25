@@ -2,17 +2,31 @@
 <html>
   <head>
     <title>A Wee Sketchy McPadster</title>
-
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link href="../css_reset.css" rel="stylesheet" type="text/css">
     <link href="styles.css" rel="stylesheet" type="text/css">
 
   </head>
   <body>
 
+  <div id="boxes">
+    <div id="dialog" class="window">
+      <h2 id="popuptitle">Let's get started</h2>
+    </br>
+      <p>Pick a brush by entering a number between <strong>1</strong> (more pixelated)
+        and <strong>100</strong> (less pixelated)</p>
+      <div id="popupfoot">
+        <input type="number" name="quantity" min="1" max="10"><input type="submit">
+      </div>
+    </div>
+    <div id="mask"></div>
+  </div>
+
   <h1>A Wee Sketchy McPadster</h1>
-    <h2>Mouse into the box to start drawing</h2>
+    <h2>Mouse into the box to start a wee drawing!</h2>
 
     <div class="wrapper">
+
       <div class="topbutton">
         <button class="top" id="start">Let's get started</button>
         <button class="top">Change pixel size</button>
@@ -22,6 +36,7 @@
       <div class="bottombutton">
         <!--Change color RGB DROPDOWN -->
         <button class="minor">Rainbow mode</button>
+        <button class="minor">Wee mode</button>
         <button class="minor">Eraser</button>
         <button class="minor">Squares</button>
         <button class="minor">Circles</button>

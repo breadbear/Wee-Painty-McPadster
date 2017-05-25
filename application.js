@@ -1,16 +1,72 @@
 
 
-sideLength = 100;
-divDimension = 400 / sideLength;
 
+sideLength = 10;
 
-//The following solution works, but it takes for fucking ever to load
 $(document).ready(function() {
-  for (var i = 0; i < (sideLength*sideLength); i++) {
-    $("#grid").append($('<div class="divGrid"></div>'));
-  }
-  $('.divGrid').css('height', divDimension + 'px').css('width', divDimension + 'px');
+
+
+  //Popup adapted from flerovium: http://www.jqueryscript.net/lightbox/Simple-jQuery-Plugin-For-Opening-A-Popup-Window-On-Page-load.html
+  var id = '#dialog';
+  //Get the screen height and width
+  var maskHeight = $(document).height();
+  var maskWidth = $(window).width();
+
+  //Set height & width to mask the whole screen
+  $('#mask').css({'width': maskWidth, 'height': maskHeight});
+
+  //Transition effect
+  $('#mask').fadeIn(500);
+  $('#mask').fadeTo("slow", 0.9);
+
+  //Get the window height and width
+  var winH = $(window).height();
+  var winW = $(window).width();
+
+  //Set the popup window to center
+  $(id).css('top', winH/2-$(id).height()/2);
+  $(id).css('left', winW/2-$(id).width()/2);
+
+  //transition effect
+  $(id).fadeIn(2000);
+
+ //Set number of divs per side, build grid
+  $('input[type=submit]').click(function() {
+    sideLength = $('input[name=quantity]').val();
+    $('#mask').fadeOut(500);
+    $('.window').fadeOut(500);
+    $(genGrid);
+  });
+
+//Note: add to the above to make this work when you push Enter too
+
+/*
+  //If close button is clicked
+  $('.window .close').click(function (e) {
+    //Cancel the link behavior
+    e.preventDefault();
+    $('#mask').hide();
+    $('.window').hide();
+  });
+
+
+//if mask is clicked
+$('#mask').click(function() {
+  $(this).hide();
+  $('.window').hide();
 });
+*/
+
+  function genGrid() {
+    divDimension = 400 / sideLength;
+    for (var i = 0; i < (sideLength*sideLength); i++) {
+      $("#grid").append($('<div class="divGrid"></div>'));
+    }
+    $('.divGrid').css('height', divDimension + 'px').css('width', divDimension + 'px');
+  }
+});
+
+
 
   //for (var i=0; i<sideLength.length; i++) {
 //Let's get started! Set initial grid size like https://beachfern.github.io/sketchpad/
