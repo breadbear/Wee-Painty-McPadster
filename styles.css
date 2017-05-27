@@ -1,6 +1,6 @@
 h1 {
   font-family: 'Raleway', sans-serif;
-  margin: 0px auto;
+  margin: 10px auto;
   text-align: center;
   font-size: 3em;
 }
@@ -8,6 +8,11 @@ h1 {
 h2 {
   font-family: 'Raleway', sans-serif;
   text-align: center;
+  margin: 10px auto;
+}
+
+strong {
+  font-weight: 700;
 }
 
 input {
@@ -28,6 +33,24 @@ p {
   font-family: 'Raleway', sans-serif;
   text-align: center;
 
+}
+
+.row {
+  height: 10px;
+  width: 100%;
+  clear: both;
+  border: 1px solid black;
+}
+
+.column {
+  /*background-color: #F2F2F2;*/
+  display: inline-block;
+  float: left;
+  border: 1px solid black;
+}
+
+.blackFill {
+  background-color: black;
 }
 
 #mask {
@@ -88,6 +111,16 @@ input {
   text-align: center;
 }
 
+.minor {
+  font-family: 'Raleway', sans-serif;
+  font-size: 
+}
+
+#start {
+  font-family: 'Raleway', sans-serif;
+  font-size: 2em;
+}
+
 .bottombutton {
   text-align: center;
 }
@@ -95,20 +128,28 @@ input {
 #grid {
   position: relative;
   height: 400px;
-  width: 400px;
+  width: 1000px;
   margin: 10px auto;
   padding: 0;
-  border: 1px solid black;
   box-sizing: content-box;
   max-height: 400px;
   font-size: 0;
+  overflow: hidden;
 }
 
 .divGrid {
-  border: 1px solid black;
+  border: none;
   display: inline-block;
   /*display: table-cell;*/
   clear: both;
   box-sizing: border-box;
 
+}
+
+.highlighted {
+  border: 1px solid blue;
+}
+
+.dot {
+  border-radius: 50%;
 }

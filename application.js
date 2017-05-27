@@ -1,10 +1,9 @@
 
+var sideLength = 10;
 
-
-sideLength = 10;
+//Get start over figured out and you're good to go
 
 $(document).ready(function() {
-
 
   //Popup adapted from flerovium: http://www.jqueryscript.net/lightbox/Simple-jQuery-Plugin-For-Opening-A-Popup-Window-On-Page-load.html
   var id = '#dialog';
@@ -30,14 +29,164 @@ $(document).ready(function() {
   //transition effect
   $(id).fadeIn(2000);
 
- //Set number of divs per side, build grid
-  $('input[type=submit]').click(function() {
-    sideLength = $('input[name=quantity]').val();
-    $('#mask').fadeOut(500);
-    $('.window').fadeOut(500);
-    $(genGrid);
+  //Form submits on keypress Enter
+  $('input[name=quantity]').keypress(function(e) {
+    if(e.which == 13) {
+      if($('input[name=quantity]').focus()) {
+        $('input[type=submit]').click();
+      }
+    }
   });
 
+ //Set number of divs per side
+  $('input[type=submit]').click(function() {
+    sideLength = $('input[name=quantity]').val();
+    $('#grid').empty();
+    if (sideLength > 0 && sideLength <= 100) {
+      $('#mask').fadeOut(500);
+      $('.window').fadeOut(500);
+      $(genGrid);
+      $(blackDraw);
+    } else {
+      $('#popuptitle').text('Cheeky bastard');
+      $('#popuptext').text('Enter a number smaller than 100, please. I don\'t want to freeze up your browser.')
+    }
+  });
+
+//BUILDING BUTTONS AND CONTROLS
+
+  //Start over
+  $('#start').click(function() {
+    $('#popuptitle').text('Starting over?');
+    $('#popuptext').text('How many pixels per side would you like (max 100)?')
+    $('#grid').empty();
+    //Repeating the popup steps above; might be good to refactor?
+    $('#mask').css({'width': maskWidth, 'height': maskHeight});
+    $('#mask').fadeIn(500);
+    $('#mask').fadeTo("slow", 0.9);
+    $(id).css('top', winH/2-$(id).height()/2);
+    $(id).css('left', winW/2-$(id).width()/2);
+    $(id).fadeIn(2000);
+    $('input[type=submit]').click(function() {
+      sideLength = $('input[name=quantity]').val();
+      $('#grid').empty();
+      if (sideLength > 0 && sideLength <= 100) {
+        $('#mask').fadeOut(500);
+        $('.window').fadeOut(500);
+        $('#rainbow, #eraser, #dot').removeClass('highlighted');
+        $(genGrid);
+        $(blackDraw);
+      } else {
+        $('#popuptitle').text('Cheeky bastard');
+        $('#popuptext').text('Between 1 and 100, please.')
+      }
+    });
+    $('input[name=quantity]').keypress(function(e) {
+      if(e.which == 13) {
+        if($('input[name=quantity]').focus()) {
+          $('input[type=submit]').click();
+        }
+      }
+    });
+  });
+
+  //Turn on eraser
+  $('#eraser').click(function() {
+    if ($(this).hasClass('highlighted')) {
+      $(this).removeClass('highlighted');
+        if($('#rainbow').hasClass('highlighted')) {
+          $(rainbow);
+        } else {
+          $(blackDraw);
+        }
+    } else {
+      $(this).addClass('highlighted');
+      $(eraser)};
+  });
+
+  //Dot mode
+  $('#dot').click(function() {
+    $(this).toggleClass('highlighted');
+    $('.divGrid').toggleClass('dot');
+  });
+
+  //Rainbow mode
+  $('#rainbow').click(function() {
+    if($('#rainbow').hasClass('highlighted')) {
+      $(this).removeClass('highlighted');
+      $(blackDraw);
+    } else {
+      $(this).addClass('highlighted');
+      $(rainbow)};
+  });
+});
+
+
+
+function genGrid() {
+  //Set grid size and generate
+  divDimension = 1000 / sideLength;
+  for (var i = 0; i < (sideLength*(sideLength / 2.5)); i++) {
+    $("#grid").append($('<div class="divGrid"></div>'));
+      }
+  $('.divGrid').css('height', divDimension + 'px').css('width', divDimension + 'px');
+}
+
+function blackDraw() {
+$('.divGrid').on('mouseenter', function(){
+  $(this).css("background-color", "black");
+  });
+}
+
+function eraser() {
+  $('.divGrid').on('mouseenter', function(){
+    $(this).css("background-color", "white");
+    });
+}
+
+function rainbow() {
+  $('.divGrid').on('mouseenter', function() {
+    var r = Math.floor(Math.random() * 255);
+    var g = Math.floor(Math.random() * 255);
+    var b = Math.floor(Math.random() * 255);
+    $(this).css("background-color", "rgba(" + r + "," + g + "," + b + ", 0.6)");
+  });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Below is anyafink's solution which I don't love. am setting aside for now
+//for my flawed genGrid, which I'll fix later i spose
+/*
+    for(var i = 0; i < sideLength; i++) {
+      var $row = $('<div class="row"></div>');
+      $('#grid').append($row.clone());
+    }
+
+    for(var i = 0; i < sideLength; i++) {
+      var $square = $('<div class="square"></div>');
+      $('.row').append($square.clone());
+    }
+
+    var calc = 100/sideLength;
+    calc -= calc * .01;
+
+    $('.row').css({'height': calc + '%'});
+    $('.square').css({'width': calc + '%'});
+  }
+});
+
+*/
 //Note: add to the above to make this work when you push Enter too
 
 /*
@@ -57,14 +206,6 @@ $('#mask').click(function() {
 });
 */
 
-  function genGrid() {
-    divDimension = 400 / sideLength;
-    for (var i = 0; i < (sideLength*sideLength); i++) {
-      $("#grid").append($('<div class="divGrid"></div>'));
-    }
-    $('.divGrid').css('height', divDimension + 'px').css('width', divDimension + 'px');
-  }
-});
 
 
 
