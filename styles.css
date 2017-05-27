@@ -12,12 +12,13 @@ h2 {
 }
 
 strong {
-  font-weight: 700;
+  font-weight: bold;
 }
 
 input {
   display: inline;
   font-size: 16px;
+  margin: 5px;
 }
 
 input[type=number] {
@@ -32,25 +33,6 @@ input[type=submit] {
 p {
   font-family: 'Raleway', sans-serif;
   text-align: center;
-
-}
-
-.row {
-  height: 10px;
-  width: 100%;
-  clear: both;
-  border: 1px solid black;
-}
-
-.column {
-  /*background-color: #F2F2F2;*/
-  display: inline-block;
-  float: left;
-  border: 1px solid black;
-}
-
-.blackFill {
-  background-color: black;
 }
 
 #mask {
@@ -85,7 +67,6 @@ p {
   text-align: left;
 }
 
-
 #popupfoot {
   font-size: 12pt;
   position: absolute;
@@ -99,10 +80,6 @@ p {
   font-size: 16pt;
 }
 
-input {
-  margin: 5px;
-}
-
 .wrapper {
   margin: 0px auto;
 }
@@ -113,7 +90,7 @@ input {
 
 .minor {
   font-family: 'Raleway', sans-serif;
-  font-size: 
+  font-size:
 }
 
 #start {
@@ -140,10 +117,8 @@ input {
 .divGrid {
   border: none;
   display: inline-block;
-  /*display: table-cell;*/
   clear: both;
   box-sizing: border-box;
-
 }
 
 .highlighted {
